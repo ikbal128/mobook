@@ -27,6 +27,12 @@ app.use(session({
         maxAge: 100000
     }
 }))
+
+app.use((req, res, next) =>{
+    res.locals.currentUrl = req.path;
+    next();
+})
+
 app.use(routes);
 
 mongoose.connect(`mongodb://127.0.0.1:27017/mobook`)

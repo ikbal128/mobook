@@ -1,5 +1,5 @@
 module.exports = {
     getHomePage: (req, res)=> {
-        res.render('admin/index')
+        res.render('admin/index',{title: "Dashboard"})
     }
 }

@@ -1,0 +1,79 @@
+    <!doctype html>
+
+    <html
+    lang="en"
+    class="layout-menu-fixed layout-compact"
+    data-assets-path="/"
+    data-template="vertical-menu-template-free">
+    <head>
+    <meta charset="utf-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>List Users</title>
+
+    <%- include('../../partials/admin/topside') %>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <div class="row align-items-center">
+            <div class="col-md-4 col-sm-12 mb-2 mb-md-0">
+                <h5 class="card-header">Users</h5>
+            </div>
+        <div class="col-md-3 col-sm-4 text-end">
+            <a href="#" class="btn btn-success w-100 w-md-auto">
+                Tambah User
+            </a>
+        </div>
+        </div>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+            <thead>
+                <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% users.forEach((user, index) =>{ %>
+                    <tr>
+                        <td><%= index+1 %></td>
+                            <td><%= user.firstName %> <%=  user.lastName %></td>
+                            <td><%= user.username %></td>
+                            <% if (user.role === 0) { %>
+                            <td>User</td>
+                        <% }else if(user.role === 1){ %>
+                            <td>Admin</td>
+                            <% } %>
+                            <td>
+                            <div class="dropdown">
+                            <button
+                                type="button"
+                                class="btn p-0 dropdown-toggle hide-arrow shadow-none"
+                                data-bs-toggle="dropdown">
+                                <i class="icon-base ri ri-more-2-line icon-18px"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="javascript:void(0);">
+                                <i class="icon-base ri ri-pencil-line icon-18px me-1"></i>
+                                Edit</a
+                                >
+                                <a class="dropdown-item" href="javascript:void(0);">
+                                <i class="icon-base ri ri-delete-bin-6-line icon-18px me-1"></i>
+                                Delete</a
+                                >
+                            </div>
+                        </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                    <%- include('../../partials/admin/bottomside') %>
