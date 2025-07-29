@@ -5,6 +5,7 @@ const mongoose = require(`mongoose`);
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const path = require('path');
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 const port = process.env.PORT;
@@ -27,6 +28,8 @@ app.use(session({
         maxAge: 100000
     }
 }))
+
+app.use(methodOverride('_method'));
 
 app.use((req, res, next) =>{
     res.locals.currentUrl = req.path;
